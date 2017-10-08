@@ -1,0 +1,139 @@
+<div class="main-content">
+<div class="container-fluid">
+		<div class="row" *ngIf="!showForm">
+			
+		       <div class="col-md-12">
+		       <a href="javascript:void(0)" class="btn btn-danger pull-right" (click)="showForm = !showForm">New Bookmark</a>
+	                <div class="card card-plain">
+	                    <div class="card-header" data-background-color="red">
+	                        <h4 class="title">Bookmarks List</h4>
+	                    </div>
+	                    <div class="card-content table-responsive">
+	                        <table class="table table-hover">
+	                            <thead>
+	                                <tr>
+	                                    <th>Title</th>
+	                                    <th>URL</th>
+	                                    <th>Tag</th>
+	                                    <th>Created Date</th>
+	                                    <th></th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr *ngFor="let bookmark of bookmarks">
+	                                    <td width="30%">{{bookmark.title}}</td>
+	                                    <td style="max-width: 120px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a target="_blank" href="{{bookmark.url}}">{{bookmark.url}}</a></td>
+	                                    <td width="15%">{{bookmark.tag}}</td>
+	                                    <td width="10%">{{bookmark.createdDate | date}}</td>
+	                                    <td width="5%">
+	                                    	<i class="material-icons pull-right" style="font-size:14px;line-height: 32px;cursor:pointer;color:#999999;" (click)="deleteBookmark(bookmark)">delete</i>
+											<i class="material-icons pull-right" style="font-size:14px;line-height: 32px;cursor:pointer;color:#999999;" (click)="editBookmark(bookmark)">border_color</i>
+	                                    </td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
+	                </div>
+	            </div>
+		</div>
+
+    <div class="row" *ngIf="showForm">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="red">
+                    <h4 class="title">Bookmark Details</h4>
+                </div>
+                <div class="card-content">
+                    <form>
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Title</label>
+                                    <input type="text" class="form-control" [(ngModel)]="bookmark.title" name="title">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group form-black label-floating is-empty">
+                                    <label class="control-label">Add a tag</label>
+                                    <select class="form-control"  [(ngModel)]="bookmark.tag" name="tag">
+                                    	<option value="None"></option>
+										<option value="Art">Art</option>
+										<option value="Cryptocurrency">Cryptocurrency</option>
+										<option value="Science">Science</option>
+										<option value="Technology">Technology</option>
+										<option value="Programming">Programming</option>
+										<option value="Travel">Travel</option>
+										<option value="Philosophy">Philosophy</option>
+										<option value="Basic Income">Basic Income</option>
+										<option value="Education">Education</option>
+										<option value="Psychology">Psychology</option>
+										<option value="Business">Business</option>
+										<option value="SPace">SPace</option>
+										<option value="Lit">Lit</option>
+										<option value="Data Science">Data Science</option>
+										<option value="World">World</option>
+										<option value="Digital Design">Digital Design</option>
+										<option value="Spirtuality">Spirtuality</option>
+										<option value="Family">Family</option>
+										<option value="Work">Work</option>
+										<option value="RelationShip">RelationShip</option>
+										<option value="Math">Math</option>
+										<option value="Media">Media</option>
+										<option value="Film">Film</option>
+										<option value="Enviroment">Enviroment</option>
+										<option value="Food">Food</option>
+										<option value="Health">Health</option>                                    	
+										<option value="Mental Health">Mental Health</option>
+										<option value="Productivity">Productivity</option>
+										<option value="Humor">Humor</option>
+										<option value="History">History</option>
+										<option value="Politics">Politics</option>
+										<option value="Self">Self</option>
+										<option value="Sports">Sports</option>
+										<option value="Music">Music</option>
+										<option value="Sexuality">Sexuality</option>
+										<option value="Culture">Culture</option>
+										<option value="Future">Future</option>
+										<option value="Economy">Economy</option>
+										<option value="Creativity">Creativity</option>
+										<option value="Enterpreneurship">Enterpreneurship</option>
+										<option value="Social Media">Social Media</option>
+										<option value="Neuroscience">Neuroscience</option>
+										<option value="Artificial Intelligence">Artificial Intelligence</option>
+										<option value="Software Eng">Software Eng</option>
+										<option value="Wellness">Wellness</option>
+										<option value="Freelancing">Freelancing</option>
+										<option value="Cybersecurity">Cybersecurity</option>
+										<option value="Marketing">Marketing</option>
+										<option value="Photography">Photography</option>
+										<option value="Javascript">Javascript</option>
+										<option value="Finance">Finance</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>URL</label>
+                                    <div class="form-group form-black label-floating is-empty">
+                                        <input type="text" class="form-control" [(ngModel)]="bookmark.url" name="url">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger pull-right" (click)="saveBookmark()">Save Bookmark</button>
+                        <button type="button" class="btn btn-default pull-right" (click)="showForm = !showForm">Cancel</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+</div>
